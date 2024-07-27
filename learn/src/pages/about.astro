@@ -1,7 +1,5 @@
 ---
-import '../styles/global.css';
-
-const pageTitle = "About Me";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const identity = {
   firstName: "Samrridh",
@@ -17,15 +15,12 @@ const finished = false;
 const goal = 3;
 
 const skinColor = "navy";
+const pageTitle = "About";
 ---
 
-<html lang="en">
+<BaseLayout pageTitle = {pageTitle}>
 	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
+
 
         <style define:vars={{skinColor}}>
             h1 {
@@ -41,12 +36,6 @@ const skinColor = "navy";
           </style>
 	</head>
 	<body>
-        <body>
-            <h1>My Astro Site</h1>
-            
-                    <a href="/">Home</a>
-        <a href="/about/">About</a>
-
             <h1>{pageTitle}</h1>
             <h2>... and my new Astro site!</h2>
           
@@ -59,7 +48,7 @@ const skinColor = "navy";
               <li>My name is {identity.firstName}.</li>
               <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
               {identity.hobbies.length >= 2 &&
-                <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}{identity.hobbies[2]}</li>
+                <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
               }
             </ul>
             <p>My skills are:</p>
@@ -72,6 +61,7 @@ const skinColor = "navy";
             {finished && <p>I finished this tutorial!</p>}
             
             {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
-          </body>
+          
+          </BaseLayout>
 	</body>
 </html>
